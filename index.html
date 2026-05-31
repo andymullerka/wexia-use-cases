@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Use Cases | Wexia Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --red: #B12028;
+      --dark: #231F20;
+      --beige: #E1B88C;
+      --white: #FFFFFF;
+      --gray: #6B6566;
+      --light: #F7F5F3;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .btn {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 420px;
+      background: linear-gradient(180deg, var(--red) 0%, #8B1520 100%);
+      padding: 3rem 5% 4rem;
+      overflow: hidden;
+    }
+
+    .hero-deco {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.08;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: calc(420px - 7rem);
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-logo {
+      margin-top: 1.25rem;
+      margin-bottom: 3.25rem;
+      padding: 0.75rem 0;
+    }
+
+    .hero-logo img {
+      height: 80px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+
+    .hero-left h1 {
+      font-size: clamp(2.4rem, 5vw, 3.75rem);
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-divider {
+      width: 72px;
+      height: 2px;
+      background: var(--beige);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--white);
+      opacity: 0.92;
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    .hero-card {
+      background: #1C1C1C;
+      border-radius: 16px;
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .hero-card-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--beige);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-card-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--beige);
+      flex-shrink: 0;
+    }
+
+    .hero-metric {
+      padding: 1.5rem 0;
+    }
+
+    .hero-metric:first-of-type {
+      padding-top: 0;
+    }
+
+    .hero-metric:last-of-type {
+      padding-bottom: 0;
+    }
+
+    .hero-metric:not(:last-of-type) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-metric-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-metric-value {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 52px;
+      color: var(--red);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-metric-trend {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #22C55E;
+      margin-top: 0.35rem;
+    }
+
+    .hero-metric-trend svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .hero-metric-label {
+      font-size: 0.9rem;
+      color: #9CA3AF;
+      line-height: 1.45;
+    }
+
+    /* ── Filters ── */
+    .filters-section {
+      padding: 3rem 5% 1.5rem;
+      background: var(--white);
+    }
+
+    .filters-section h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray);
+      margin-bottom: 1.25rem;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .filter-btn {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.875rem;
+      padding: 0.6rem 1.4rem;
+      border: 2px solid var(--dark);
+      background: var(--white);
+      color: var(--dark);
+      cursor: pointer;
+      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .filter-btn:hover {
+      background: var(--light);
+    }
+
+    .filter-btn.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    /* ── Grid ── */
+    .cases-section {
+      padding: 2rem 5% 5rem;
+      background: var(--light);
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .case-card {
+      background: var(--white);
+      border: 2px solid var(--dark);
+      display: flex;
+      flex-direction: column;
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+      transition: transform 0.25s, box-shadow 0.25s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .case-card.hidden {
+      display: none;
+    }
+
+    .case-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 8px 8px 0 var(--dark);
+    }
+
+    .card-top {
+      height: 6px;
+      background: var(--red);
+    }
+
+    .card-body {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .category-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.75rem;
+      margin-bottom: 1rem;
+      align-self: flex-start;
+      clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+    }
+
+    .tag-ai { background: var(--dark); color: var(--beige); }
+    .tag-ecommerce { background: var(--red); color: var(--white); }
+    .tag-marketing { background: var(--beige); color: var(--dark); }
+    .tag-web { background: var(--dark); color: var(--white); }
+
+    .card-body h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .card-body .excerpt {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .results {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .result-badge {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.35rem 0.7rem;
+      background: var(--light);
+      border-left: 3px solid var(--red);
+      color: var(--dark);
+    }
+
+    .btn-read {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--dark);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      align-self: flex-start;
+      clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+      transition: background 0.2s;
+    }
+
+    .btn-read:hover {
+      background: var(--red);
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem;
+      color: var(--gray);
+      display: none;
+    }
+
+    .no-results.visible {
+      display: block;
+    }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(35, 31, 32, 0.75);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: var(--white);
+      max-width: 680px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border: 3px solid var(--dark);
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+      transform: translateY(30px);
+      transition: transform 0.3s;
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      background: var(--red);
+      padding: 2rem 2.5rem 1.5rem;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), 0 100%);
+    }
+
+    .modal-header .category-tag {
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-header h2 {
+      font-size: 1.75rem;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      background: none;
+      border: 2px solid var(--white);
+      color: var(--white);
+      width: 36px;
+      height: 36px;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: var(--dark);
+      border-color: var(--dark);
+    }
+
+    .modal-body {
+      padding: 2rem 2.5rem;
+    }
+
+    .modal-results {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 2px solid var(--light);
+    }
+
+    .modal-results .result-badge {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      background: var(--white);
+      border: 2px solid var(--red);
+      border-left: 4px solid var(--red);
+    }
+
+    .modal-body p {
+      font-size: 0.95rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .modal-body h4 {
+      font-size: 1rem;
+      margin: 1.5rem 0 0.75rem;
+      color: var(--red);
+    }
+
+    .modal-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal-body li {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+      color: var(--gray);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 3.5rem 5%;
+      clip-path: polygon(0 24px, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-brand .logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .footer-brand .logo span {
+      color: var(--beige);
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: var(--beige);
+      max-width: 320px;
+    }
+
+    .footer-contact h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--beige);
+      margin-bottom: 1rem;
+    }
+
+    .footer-contact p,
+    .footer-contact a {
+      font-size: 0.9rem;
+      color: var(--white);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-contact a:hover {
+      color: var(--beige);
+    }
+
+    .footer-bottom {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(225, 184, 140, 0.2);
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .cases-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2.75rem;
+      }
+
+      .hero-card {
+        max-width: 480px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 420px;
+        padding-bottom: 3rem;
+      }
+
+      .hero-inner {
+        min-height: auto;
+      }
+
+      .hero-card {
+        max-width: none;
+        padding: 28px;
+      }
+
+      .hero-metric-value {
+        font-size: 40px;
+      }
+
+      .modal {
+        max-height: 90vh;
+      }
+
+      .modal-header,
+      .modal-body {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <svg class="hero-deco" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,120 C360,40 720,200 1080,100 C1260,60 1380,80 1440,120" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+      <path d="M0,280 C480,360 960,180 1440,300" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+      <path d="M200,0 C400,160 600,80 900,220 S1300,320 1440,420" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+      <circle cx="1180" cy="90" r="120" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+      <circle cx="280" cy="340" r="80" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    </svg>
+
+    <div class="hero-inner">
+      <div class="hero-left">
+        <a href="#" class="hero-logo">
+          <img src="wexia_red_RGB.svg" alt="Wexia Digital">
+        </a>
+        <h1>Reálné výsledky,<br>nasazené projekty.</h1>
+        <div class="hero-divider"></div>
+        <p class="hero-subtitle">Nejsou to jen sliby — ukazujeme měřitelné dopady z projektů, které jsme realizovali pro naše klienty napříč odvětvími.</p>
+      </div>
+
+      <div class="hero-card">
+        <h2 class="hero-card-title"><span class="hero-card-dot"></span>Výsledky projektů</h2>
+        <div class="hero-metric">
+          <div class="hero-metric-row">
+            <span class="hero-metric-value">78%</span>
+            <span class="hero-metric-trend" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 14l5-5 5 5"/>
+              </svg>
+            </span>
+          </div>
+          <span class="hero-metric-label">dotazů bez operátora</span>
+        </div>
+        <div class="hero-metric">
+          <div class="hero-metric-row">
+            <span class="hero-metric-value">+340%</span>
+            <span class="hero-metric-trend" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 14l5-5 5 5"/>
+              </svg>
+            </span>
+          </div>
+          <span class="hero-metric-label">konverzí</span>
+        </div>
+        <div class="hero-metric">
+          <div class="hero-metric-row">
+            <span class="hero-metric-value">3×</span>
+            <span class="hero-metric-trend" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 14l5-5 5 5"/>
+              </svg>
+            </span>
+          </div>
+          <span class="hero-metric-label">rychlejší zpracování</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtry -->
+  <section class="filters-section">
+    <h2>Filtrovat podle kategorie</h2>
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-filter="all">Všechny</button>
+      <button class="filter-btn" data-filter="ai">AI &amp; Automatizace</button>
+      <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+      <button class="filter-btn" data-filter="marketing">Marketing</button>
+      <button class="filter-btn" data-filter="web">Web &amp; Aplikace</button>
+    </div>
+  </section>
+
+  <!-- Grid karet -->
+  <section class="cases-section">
+    <div class="cases-grid" id="casesGrid"></div>
+    <p class="no-results" id="noResults">V této kategorii zatím nemáme žádné use cases.</p>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <button class="modal-close" id="modalClose" aria-label="Zavřít">&times;</button>
+        <span class="category-tag" id="modalTag"></span>
+        <h2 id="modalTitle"></h2>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="kontakt">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">WEXIA <span>DIGITAL</span></span>
+        <p>Digitální agentura, která propojuje strategii, design a technologie. Pomáháme firmám růst v digitálním světě.</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Kontakt</h4>
+        <p>Wexia Digital s.r.o.</p>
+        <p>Václavské náměstí 1, 110 00 Praha 1</p>
+        <a href="mailto:hello@wexiadigital.cz">hello@wexiadigital.cz</a>
+        <a href="tel:+420777123456">+420 777 123 456</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Wexia Digital. Všechna práva vyhrazena.
+    </div>
+  </footer>
+
+  <script>
+    const useCases = [
+      {
+        id: 1,
+        category: 'ai',
+        categoryLabel: 'AI & Automatizace',
+        tagClass: 'tag-ai',
+        title: 'AI chatbot pro zákaznickou podporu',
+        excerpt: 'Implementovali jsme inteligentního chatbota pro e-shop s elektronikou, který zvládá 78 % dotazů bez zásahu operátora. Systém se učí z historických konverzací a neustále se zlepšuje.',
+        results: ['−62 % času odezvy', '+34 % spokojenost zákazníků'],
+        fullText: `
+          <p>Klient — středně velký e-shop s elektronikou — řešil přetíženou zákaznickou linku a pomalé reakční doby. Náš tým navrhl a nasadil AI chatbota integrovaného do webu i WhatsApp kanálu.</p>
+          <h4>Výzva</h4>
+          <p>Ročně přicházelo přes 45 000 dotazů, z nichž 70 % se opakovalo. Operátoři trávili většinu času odpovídáním na stejné otázky o dopravě, reklamacích a kompatibilitě produktů.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>NLP model trénovaný na 3 letech historických konverzací</li>
+            <li>Integrace s ERP systémem pro stav objednávek v reálném čase</li>
+            <li>Automatické eskalace složitých případů na lidské operátory</li>
+            <li>Dashboard pro analýzu nejčastějších dotazů a mezer ve znalostech</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>Chatbot zpracovává 78 % dotazů samostatně. Průměrná doba odezvy klesla z 4 hodin na 12 sekund. Spokojenost zákazníků vzrostla o 34 % a tým podpory se mohl soustředit na komplexní případy s vyšší hodnotou.</p>
+        `
+      },
+      {
+        id: 2,
+        category: 'ai',
+        categoryLabel: 'AI & Automatizace',
+        tagClass: 'tag-ai',
+        title: 'Automatizace fakturace ve výrobní firmě',
+        excerpt: 'Navrhli jsme RPA řešení, které automaticky zpracovává příchozí faktury, páruje je s objednávkami a zadává je do účetního systému. Proces, který dříve trval hodiny, nyní běží během minut.',
+        results: ['−85 % manuální práce', 'ROI za 4 měsíce'],
+        fullText: `
+          <p>Výrobní společnost se 120 zaměstnanci ručně zpracovávala 800+ faktur měsíčně. Chybovost dosahovala 6 % a uzávěrky se pravidelně protahovaly.</p>
+          <h4>Výzva</h4>
+          <p>Faktury přicházely v různých formátech — PDF, skeny, e-maily. Účetní tým je ručně přepisoval do Heliosu, což zabralo 3 celé pracovní dny měsíčně.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>OCR engine pro extrakci dat z libovolného formátu faktury</li>
+            <li>Automatické párování s objednávkami v ERP systému</li>
+            <li>Validace DIČ, IČO a bankovních údajů proti ARES</li>
+            <li>Notifikace účetnímu pouze u faktur vyžadujících manuální kontrolu</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>85 % faktur se zpracuje plně automaticky. Chybovost klesla pod 0,5 %. Investice se vrátila za 4 měsíce a tým uvolnil kapacitu pro strategičtější úkoly.</p>
+        `
+      },
+      {
+        id: 3,
+        category: 'ai',
+        categoryLabel: 'AI & Automatizace',
+        tagClass: 'tag-ai',
+        title: 'Prediktivní analýza pro logistiku',
+        excerpt: 'Vytvořili jsme ML model, který predikuje poptávku po dopravních kapacitách a optimalizuje trasování vozového parku. Klient snížil prázdné jízdy a ušetřil na palivu i času.',
+        results: ['−28 % prázdných km', '+19 % využití vozidel'],
+        fullText: `
+          <p>Logistická firma s flotilou 85 vozidel potřebovala lépe plánovat trasy a kapacity. Manuální plánování vedlo k neefektivnímu využití vozidel a vysokým nákladům na palivo.</p>
+          <h4>Výzva</h4>
+          <p>Sezónní výkyvy poptávky, nepředvídatelné objednávky a složitá síť distribučních bodů komplikovaly efektivní plánování tras.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>Prediktivní model poptávky na základě historických dat a externích signálů</li>
+            <li>Algoritmus pro optimalizaci tras s ohledem na kapacitu a časová okna</li>
+            <li>Real-time dashboard pro dispečery s doporučenými úpravami</li>
+            <li>Integrace s GPS telematikou pro sledování skutečného využití</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>Prázdné kilometry klesly o 28 %, využití vozidel vzrostlo o 19 %. Roční úspora na palivu a údržbě přesáhla 1,2 mil. Kč.</p>
+        `
+      },
+      {
+        id: 4,
+        category: 'ecommerce',
+        categoryLabel: 'E-commerce',
+        tagClass: 'tag-ecommerce',
+        title: 'Redesign e-shopu módní značky',
+        excerpt: 'Kompletní redesign e-shopu včetně UX auditu, nového vizuálního stylu a optimalizace checkout procesu. Nový design reflektuje identitu značky a výrazně zjednodušuje nákupní cestu.',
+        results: ['+40 % konverzí', '+22 % průměrná objednávka'],
+        fullText: `
+          <p>Česká módní značka s ročním obratem 45 mil. Kč měla zastaralý e-shop s vysokou mírou opuštění košíku (72 %) a nízkou konverzí na mobilních zařízeních.</p>
+          <h4>Výzva</h4>
+          <p>Web neodpovídal prémiovému positioningu značky. Checkout měl 5 kroků, produktové stránky postrádaly sociální důkaz a mobilní verze byla pomalá.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>UX audit a redesign informační architektury</li>
+            <li>Nový vizuální systém v souladu s brand manuálem značky</li>
+            <li>One-page checkout s Apple Pay a Google Pay</li>
+            <li>Optimalizace rychlosti — LCP pod 1,8 s na mobilu</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>Konverze vzrostly o 40 %, průměrná hodnota objednávky o 22 %. Míra opuštění košíku klesla na 48 %. Mobilní tržby se zdvojnásobily.</p>
+        `
+      },
+      {
+        id: 5,
+        category: 'ecommerce',
+        categoryLabel: 'E-commerce',
+        tagClass: 'tag-ecommerce',
+        title: 'Marketplace integrace pro B2B distributora',
+        excerpt: 'Propojili jsme interní skladový systém s pěti marketplace platformami a automatizovali synchronizaci produktů, cen a skladových zásob. Klient expandoval na nové prodejní kanály bez navýšení týmu.',
+        results: ['+55 % online tržeb', '5 marketplace kanálů'],
+        fullText: `
+          <p>B2B distributor stavebních materiálů chtěl expandovat na marketplace platformy (Alza, Mall, Kaufland Global Marketplace a další), ale ruční správa katalogu byla neudržitelná.</p>
+          <h4>Výzva</h4>
+          <p>15 000 SKU v různých kategoriích, dynamické ceny podle objemu a nutnost synchronizace skladových zásob v reálném čase napříč platformami.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>Centralizovaný PIM systém jako single source of truth</li>
+            <li>Automatická synchronizace s 5 marketplace platformami</li>
+            <li>Pravidla pro dynamické ceny a slevy podle kanálu</li>
+            <li>Monitoring chyb a alerty při výpadcích synchronizace</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>Online tržby vzrostly o 55 % během prvního roku. Správa katalogu zabere týmu 2 hodiny týdně místo původních 3 dnů. Klient úspěšně expandoval na 3 nové trhy.</p>
+        `
+      },
+      {
+        id: 6,
+        category: 'ecommerce',
+        categoryLabel: 'E-commerce',
+        tagClass: 'tag-ecommerce',
+        title: 'Personalizace produktových doporučení',
+        excerpt: 'Nasadili jsme recommendation engine, který analyzuje chování návštěvníků a zobrazuje personalizované produkty. Doporučení se zobrazují na homepage, v košíku i v e-mailech po nákupu.',
+        results: ['+31 % cross-sell', '+18 % opakované nákupy'],
+        fullText: `
+          <p>E-shop s kosmetikou a doplňky stravy chtěl zvýšit průměrnou hodnotu objednávky a podpořit opakované nákupy prostřednictvím chytrých doporučení.</p>
+          <h4>Výzva</h4>
+          <p>Široký sortiment (2 400 produktů) a různorodá zákaznická base ztěžovaly relevantní doporučení. Generická doporučení „lidé také kupují" generovala nízkou míru prokliku.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>Collaborative filtering model na základě nákupní historie</li>
+            <li>Personalizované widgety na 8 klíčových místech webu</li>
+            <li>Trigger e-maily s doporučeními po opuštění košíku</li>
+            <li>A/B testování algoritmů pro kontinuální optimalizaci</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>Cross-sell tržby vzrostly o 31 %, míra opakovaných nákupů o 18 %. Průměrný počet položek v objednávce se zvýšil z 2,1 na 2,8.</p>
+        `
+      },
+      {
+        id: 7,
+        category: 'marketing',
+        categoryLabel: 'Marketing',
+        tagClass: 'tag-marketing',
+        title: 'Performance kampaň pro SaaS startup',
+        excerpt: 'Navrhli a spustili jsme multikanálovou performance kampaň zaměřenou na akvizici B2B zákazníků. Kombinace LinkedIn Ads, Google Ads a obsahového marketingu přinesla kvalifikované leady za cílovou cenu.',
+        results: ['−42 % cena za lead', '+3,2× ROI kampaní'],
+        fullText: `
+          <p>Český SaaS startup v oblasti HR tech potřeboval rychle získat prvních 200 platících zákazníků s omezeným marketingovým budgetem 150 000 Kč měsíčně.</p>
+          <h4>Výzva</h4>
+          <p>Dlouhý sales cyklus (průměrně 45 dní), vysoká konkurence a nutnost edukovat trh o nové kategorii produktu.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>LinkedIn Ads s account-based targetingem na HR manažery ve firmách 50+ zaměstnanců</li>
+            <li>Google Ads na high-intent klíčová slova s landing pages pro každý segment</li>
+            <li>Série 6 edukačních webinářů jako lead magnet</li>
+            <li>Marketing automation pro lead nurturing s personalizovaným obsahem</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>Cena za kvalifikovaný lead klesla o 42 %. ROI kampaní dosáhlo 3,2×. Startup získal 230 platících zákazníků během 8 měsíců — o 15 % nad plán.</p>
+        `
+      },
+      {
+        id: 8,
+        category: 'marketing',
+        categoryLabel: 'Marketing',
+        tagClass: 'tag-marketing',
+        title: 'Rebranding a launch kampaně',
+        excerpt: 'Kompletní rebranding technologické firmy včetně nové vizuální identity, webu a launch kampaně. Koordinovali jsme PR, sociální sítě a event pro představení nové značky trhu.',
+        results: ['+180 % brand awareness', '12 mediálních výstupů'],
+        fullText: `
+          <p>Technologická firma se po 12 letech rozhodla rebrandovat — nový název, vizuální identita a positioningu. Cílem bylo oslovit mladší B2B segment a odlišit se od konkurence.</p>
+          <h4>Výzva</h4>
+          <p>Ztráta rozpoznatelnosti u stávajících klientů, nutnost komunikovat změnu a současně přilákat novou cílovou skupinu.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>Nový brand manuál, logo a vizuální systém</li>
+            <li>Launch event pro 150 partnerů a klientů</li>
+            <li>PR kampaň s 12 mediálními výstupy v odborném tisku</li>
+            <li>Sociální sítě — 30denní teaser kampaň před odhalením</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>Brand awareness (měřeno průzkumem) vzrostl o 180 %. Web zaznamenal 340% nárůst návštěvnosti v launch týdnu. 94 % stávajících klientů pozitivně hodnotilo novou identitu.</p>
+        `
+      },
+      {
+        id: 9,
+        category: 'marketing',
+        categoryLabel: 'Marketing',
+        tagClass: 'tag-marketing',
+        title: 'Obsahová strategie pro finanční poradce',
+        excerpt: 'Vybudovali jsme obsahovou strategii založenou na SEO a edukativním obsahu. Blog, newsletter a LinkedIn profil generují organickou návštěvnost a budují důvěru u potenciálních klientů.',
+        results: ['+250 % organická návštěvnost', '+67 % poptávek z webu'],
+        fullText: `
+          <p>Nezávislý finanční poradce chtěl snížit závislost na doporučeních a budovat vlastní pipeline klientů prostřednictvím digitálního obsahu.</p>
+          <h4>Výzva</h4>
+          <p>Vysoká konkurence v SEO u finančních témat, regulatorní omezení v komunikaci a nutnost budovat důvěru u konzervativní cílové skupiny.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>SEO audit a keyword strategie pro 40 klíčových témat</li>
+            <li>Měsíční publikace 4 odborných článků a 2 case studies</li>
+            <li>LinkedIn content strategie — 3 posty týdně</li>
+            <li>Měsíční newsletter pro 2 800 odběratelů</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>Organická návštěvnost vzrostla o 250 % za 10 měsíců. Poptávky z webu se zvýšily o 67 %. Poradce se stal uznávaným odborníkem s 4 200 LinkedIn followers.</p>
+        `
+      },
+      {
+        id: 10,
+        category: 'web',
+        categoryLabel: 'Web & Aplikace',
+        tagClass: 'tag-web',
+        title: 'Mobilní aplikace pro rezervace',
+        excerpt: 'Vyvinuli jsme nativní mobilní aplikaci pro síť wellness center, která umožňuje rezervace, platby a správu členství. Aplikace nahradila telefonické objednávky a zjednodušila provoz center.',
+        results: ['+73 % online rezervací', '4,8★ hodnocení v App Store'],
+        fullText: `
+          <p>Síť 8 wellness center potřebovala moderní rezervační systém, který sníží zátěž recepcí a umožní klientům rezervovat služby kdykoliv.</p>
+          <h4>Výzva</h4>
+          <p>60 % rezervací probíhalo telefonicky, což vytvářelo fronty a chyby v plánování. Stávající webový formulář byl nepřehledný a nepodporoval platby.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>Nativní iOS a Android aplikace s intuitivním rezervačním flow</li>
+            <li>Integrace platební brány a správy členství/předplatného</li>
+            <li>Push notifikace pro připomenutí a speciální nabídky</li>
+            <li>Admin panel pro manažery center s přehledem obsazenosti</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>Online rezervace vzrostly o 73 %. Aplikace má hodnocení 4,8 hvězdiček. Telefonické objednávky klesly o 55 % a no-show rate se snížil o 30 % díky automatickým připomenutím.</p>
+        `
+      },
+      {
+        id: 11,
+        category: 'web',
+        categoryLabel: 'Web & Aplikace',
+        tagClass: 'tag-web',
+        title: 'Interní portál pro nadnárodní firmu',
+        excerpt: 'Navrhli a vyvinuli jsme intranetový portál pro 2 400 zaměstnanců ve 4 zemích. Portál centralizuje HR procesy, dokumentaci a interní komunikaci s vícejazyčnou podporou.',
+        results: ['−50 % HR dotazů', '92 % adoption rate'],
+        fullText: `
+          <p>Nadnárodní výrobní firma s pobočkami v ČR, SR, Polsku a Maďarsku potřebovala sjednotit interní komunikaci a digitalizovat HR procesy.</p>
+          <h4>Výzva</h4>
+          <p>Fragmentovaná komunikace přes e-mail a WhatsApp, chybějící centralizace dokumentů a jazykové bariéry mezi pobočkami.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>Responzivní webový portál s SSO autentizací</li>
+            <li>Self-service modul pro dovolené, výplatní pásky a benefity</li>
+            <li>Document management s verzováním a schvalovacími workflow</li>
+            <li>Podpora 4 jazyků s automatickým překladem novinek</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>HR dotazy klesly o 50 %. Adoption rate dosáhl 92 % během 3 měsíců. Onboarding nových zaměstnanců se zkrátil z 2 týdnů na 3 dny.</p>
+        `
+      },
+      {
+        id: 12,
+        category: 'web',
+        categoryLabel: 'Web & Aplikace',
+        tagClass: 'tag-web',
+        title: 'Web pro architektonické studio',
+        excerpt: 'Vytvořili jsme portfolio web s důrazem na vizuální prezentaci projektů, plynulé animace a rychlé načítání. Web funguje jako digitální vizitka studia a generátor poptávek od investorů.',
+        results: ['+95 % poptávek', 'LCP 1,2 s'],
+        fullText: `
+          <p>Architektonické studio s mezinárodními projekty potřebovalo web, který adekvátně prezentuje kvalitu jejich práce a přitahuje nové investory a developery.</p>
+          <h4>Výzva</h4>
+          <p>Původní web byl pomalý, neoptimalizovaný pro mobil a neodrážel prémiovou kvalitu studia. Portfolio projektů bylo obtížně procházitelné.</p>
+          <h4>Řešení</h4>
+          <ul>
+            <li>Minimalistický design s fullscreen galeriemi projektů</li>
+            <li>Plynulé scroll animace a lazy loading pro rychlost</li>
+            <li>CMS pro snadnou správu projektů týmem studia</li>
+            <li>Optimalizované kontaktní formuláře s kvalifikací poptávek</li>
+          </ul>
+          <h4>Výsledky</h4>
+          <p>Počet kvalifikovaných poptávek vzrostl o 95 %. Web dosahuje LCP 1,2 s a perfektního skóre v Google PageSpeed. Studio získalo 3 nové zakázky přímo z webu během prvních 6 měsíců.</p>
+        `
+      }
+    ];
+
+    const grid = document.getElementById('casesGrid');
+    const noResults = document.getElementById('noResults');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalTag = document.getElementById('modalTag');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalClose = document.getElementById('modalClose');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    let activeFilter = 'all';
+
+    function renderCards(filter) {
+      grid.innerHTML = '';
+      const filtered = filter === 'all'
+        ? useCases
+        : useCases.filter(c => c.category === filter);
+
+      if (filtered.length === 0) {
+        noResults.classList.add('visible');
+        return;
+      }
+
+      noResults.classList.remove('visible');
+
+      filtered.forEach(uc => {
+        const card = document.createElement('article');
+        card.className = 'case-card';
+        card.dataset.category = uc.category;
+        card.innerHTML = `
+          <div class="card-top"></div>
+          <div class="card-body">
+            <span class="category-tag ${uc.tagClass}">${uc.categoryLabel}</span>
+            <h3>${uc.title}</h3>
+            <p class="excerpt">${uc.excerpt}</p>
+            <div class="results">
+              ${uc.results.map(r => `<span class="result-badge">${r}</span>`).join('')}
+            </div>
+            <button class="btn-read" data-id="${uc.id}">Číst více</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      document.querySelectorAll('.btn-read').forEach(btn => {
+        btn.addEventListener('click', () => openModal(parseInt(btn.dataset.id)));
+      });
+    }
+
+    function openModal(id) {
+      const uc = useCases.find(c => c.id === id);
+      if (!uc) return;
+
+      modalTag.textContent = uc.categoryLabel;
+      modalTag.className = 'category-tag ' + uc.tagClass;
+      modalTitle.textContent = uc.title;
+
+      modalBody.innerHTML = `
+        <div class="modal-results">
+          ${uc.results.map(r => `<span class="result-badge">${r}</span>`).join('')}
+        </div>
+        ${uc.fullText}
+      `;
+
+      modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        renderCards(activeFilter);
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', e => {
+      if (e.target === modalOverlay) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    renderCards('all');
+  </script>
+</body>
+</html>
