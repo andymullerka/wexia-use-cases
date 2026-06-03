@@ -50,9 +50,25 @@
     .hero {
       position: relative;
       min-height: 420px;
-      background: linear-gradient(180deg, var(--red) 0%, #8B1520 100%);
-      padding: 3rem 5% 4rem;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(160deg, #B12028 0%, #8B1520 100%);
+      padding: 3rem 5% 80px;
       overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 72px;
+      z-index: 1;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 72' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C360,72 720,8 1080,48 C1260,64 1380,56 1440,40 L1440,72 L0,72 Z' fill='%23ffffff'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
     }
 
     .hero-deco {
@@ -66,33 +82,21 @@
 
     .hero-inner {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       align-items: center;
       gap: 4rem;
+      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      min-height: calc(420px - 7rem);
     }
 
     .hero-left {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-    }
-
-    .hero-logo {
-      margin-top: 1.25rem;
-      margin-bottom: 3.25rem;
-      padding: 0.75rem 0;
-    }
-
-    .hero-logo img {
-      height: 80px;
-      width: auto;
-      display: block;
-      filter: brightness(0) invert(1);
+      justify-content: center;
     }
 
     .hero-left h1 {
@@ -104,8 +108,8 @@
     }
 
     .hero-divider {
-      width: 72px;
-      height: 2px;
+      width: 60px;
+      height: 3px;
       background: var(--beige);
       margin-bottom: 1.25rem;
     }
@@ -119,11 +123,20 @@
     }
 
     .hero-card {
-      background: #1C1C1C;
+      background: rgba(255, 255, 255, 0.08);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
       border-radius: 16px;
       padding: 40px;
       border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28), 0 8px 16px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     }
 
     .hero-card-title {
@@ -133,7 +146,8 @@
       font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
       font-weight: 500;
-      color: var(--beige);
+      color: var(--white);
+      opacity: 0.6;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 2rem;
@@ -143,7 +157,8 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--beige);
+      background: var(--white);
+      opacity: 0.6;
       flex-shrink: 0;
     }
 
@@ -160,7 +175,7 @@
     }
 
     .hero-metric:not(:last-of-type) {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .hero-metric-row {
@@ -174,7 +189,7 @@
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
       font-size: 52px;
-      color: var(--red);
+      color: var(--white);
       line-height: 1;
       letter-spacing: -0.02em;
     }
@@ -194,22 +209,16 @@
 
     .hero-metric-label {
       font-size: 0.9rem;
-      color: #9CA3AF;
+      color: var(--white);
+      opacity: 0.75;
       line-height: 1.45;
     }
 
     /* ── Filters ── */
     .filters-section {
-      padding: 3rem 5% 1.5rem;
+      padding: 24px 5% 0.75rem;
       background: var(--white);
-    }
-
-    .filters-section h2 {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--gray);
-      margin-bottom: 1.25rem;
+      margin-top: -1px;
     }
 
     .filters {
@@ -220,46 +229,49 @@
 
     .filter-btn {
       font-family: 'Inter', sans-serif;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.875rem;
-      padding: 0.6rem 1.4rem;
-      border: 2px solid var(--dark);
-      background: var(--white);
+      padding: 10px 24px;
+      border: none;
+      border-radius: 100px;
+      background: #f5f5f5;
       color: var(--dark);
       cursor: pointer;
-      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
 
-    .filter-btn:hover {
-      background: var(--light);
+    .filter-btn:hover:not(.active) {
+      background: #e0e0e0;
     }
 
     .filter-btn.active {
-      background: var(--red);
-      border-color: var(--red);
+      background: #B12028;
       color: var(--white);
     }
 
     /* ── Grid ── */
     .cases-section {
-      padding: 2rem 5% 5rem;
+      padding: 1.25rem 5% 5rem;
       background: var(--light);
     }
 
     .cases-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      align-items: stretch;
       gap: 2rem;
     }
 
     .case-card {
       background: var(--white);
-      border: 2px solid var(--dark);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 12px;
       display: flex;
       flex-direction: column;
-      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
-      transition: transform 0.25s, box-shadow 0.25s;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
       opacity: 1;
       transform: translateY(0);
     }
@@ -269,32 +281,35 @@
     }
 
     .case-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 8px 8px 0 var(--dark);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
     }
 
     .card-top {
       height: 6px;
       background: var(--red);
+      border-radius: 12px 12px 0 0;
+      flex-shrink: 0;
     }
 
     .card-body {
-      padding: 1.75rem;
+      padding: 16px 1.75rem 1.75rem;
       flex: 1;
       display: flex;
       flex-direction: column;
+      min-height: 0;
     }
 
     .category-tag {
       display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.3rem 0.75rem;
-      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin: 0 0 16px;
       align-self: flex-start;
-      clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
     }
 
     .tag-ai { background: var(--dark); color: var(--beige); }
@@ -303,50 +318,66 @@
     .tag-web { background: var(--dark); color: var(--white); }
 
     .card-body h3 {
-      font-size: 1.25rem;
+      font-size: 20px;
+      font-weight: 700;
       margin-bottom: 0.75rem;
       line-height: 1.3;
+      color: #1a1a1a;
     }
 
     .card-body .excerpt {
-      font-size: 0.9rem;
-      color: var(--gray);
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
       margin-bottom: 1.25rem;
-      flex: 1;
     }
 
     .results {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
+      gap: 8px;
+      margin-bottom: 1.25rem;
     }
 
     .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: 0.8rem;
       font-weight: 600;
-      padding: 0.35rem 0.7rem;
-      background: var(--light);
-      border-left: 3px solid var(--red);
-      color: var(--dark);
+      padding: 6px 14px;
+      background: rgba(177, 32, 40, 0.07);
+      border: 1px solid rgba(177, 32, 40, 0.15);
+      border-radius: 100px;
+      color: #B12028;
+    }
+
+    .result-badge-icon {
+      font-weight: 700;
+      color: #B12028;
+      line-height: 1;
+      flex-shrink: 0;
     }
 
     .btn-read {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 0.75rem 1.5rem;
-      background: var(--dark);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.3px;
+      padding: 12px 28px;
+      background: #B12028;
       color: var(--white);
       border: none;
+      border-radius: 8px;
       cursor: pointer;
       align-self: flex-start;
-      clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-      transition: background 0.2s;
+      margin-top: auto;
+      transition: background 0.2s, color 0.2s;
     }
 
     .btn-read:hover {
-      background: var(--red);
+      background: #8B1520;
+      color: var(--white);
     }
 
     .no-results {
@@ -387,8 +418,9 @@
       width: 100%;
       max-height: 85vh;
       overflow-y: auto;
-      border: 3px solid var(--dark);
-      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
       transform: translateY(30px);
       transition: transform 0.3s;
     }
@@ -398,26 +430,50 @@
     }
 
     .modal-header {
-      background: var(--red);
-      padding: 2rem 2.5rem 1.5rem;
+      background: linear-gradient(135deg, #B12028, #8B1520);
+      padding: 32px 40px;
       position: relative;
-      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), 0 100%);
     }
 
-    .modal-header .category-tag {
-      margin-bottom: 0.75rem;
+    .modal-header .category-tag,
+    .modal-header .tag-ai,
+    .modal-header .tag-ecommerce,
+    .modal-header .tag-marketing,
+    .modal-header .tag-web {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--white);
+      opacity: 0.8;
+      margin-bottom: 12px;
     }
 
     .modal-header h2 {
       font-size: 1.75rem;
       color: var(--white);
-      line-height: 1.2;
+      line-height: 1.25;
+      margin-bottom: 0;
+    }
+
+    .modal-header-results {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1.25rem;
+    }
+
+    .modal-header-results .result-badge {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+    }
+
+    .modal-header-results .result-badge-icon {
+      color: var(--white);
     }
 
     .modal-close {
       position: absolute;
-      top: 1rem;
-      right: 1.25rem;
+      top: 1.25rem;
+      right: 1.5rem;
       background: none;
       border: 2px solid var(--white);
       color: var(--white);
@@ -428,34 +484,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
-      transition: background 0.2s;
+      border-radius: 6px;
+      transition: background 0.2s, border-color 0.2s;
     }
 
     .modal-close:hover {
-      background: var(--dark);
-      border-color: var(--dark);
+      background: rgba(0, 0, 0, 0.2);
+      border-color: var(--white);
     }
 
     .modal-body {
-      padding: 2rem 2.5rem;
-    }
-
-    .modal-results {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1.75rem;
-      padding-bottom: 1.75rem;
-      border-bottom: 2px solid var(--light);
-    }
-
-    .modal-results .result-badge {
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
-      background: var(--white);
-      border: 2px solid var(--red);
-      border-left: 4px solid var(--red);
+      padding: 32px 40px 40px;
     }
 
     .modal-body p {
@@ -568,11 +607,7 @@
 
       .hero {
         min-height: 420px;
-        padding-bottom: 3rem;
-      }
-
-      .hero-inner {
-        min-height: auto;
+        padding-bottom: 80px;
       }
 
       .hero-card {
@@ -609,19 +644,16 @@
 
     <div class="hero-inner">
       <div class="hero-left">
-        <a href="#" class="hero-logo">
-          <img src="wexia_red_RGB.svg" alt="Wexia Digital">
-        </a>
         <h1>Reálné výsledky,<br>nasazené projekty.</h1>
         <div class="hero-divider"></div>
         <p class="hero-subtitle">Nejsou to jen sliby — ukazujeme měřitelné dopady z projektů, které jsme realizovali pro naše klienty napříč odvětvími.</p>
       </div>
 
       <div class="hero-card">
-        <h2 class="hero-card-title"><span class="hero-card-dot"></span>Výsledky projektů</h2>
+        <h2 class="hero-card-title"><span class="hero-card-dot"></span>VÝSLEDKY PROJEKTŮ</h2>
         <div class="hero-metric">
           <div class="hero-metric-row">
-            <span class="hero-metric-value">78%</span>
+            <span class="hero-metric-value" data-value="78" data-suffix="%">0</span>
             <span class="hero-metric-trend" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 14l5-5 5 5"/>
@@ -632,7 +664,7 @@
         </div>
         <div class="hero-metric">
           <div class="hero-metric-row">
-            <span class="hero-metric-value">+340%</span>
+            <span class="hero-metric-value" data-value="340" data-prefix="+" data-suffix="%">0</span>
             <span class="hero-metric-trend" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 14l5-5 5 5"/>
@@ -643,7 +675,7 @@
         </div>
         <div class="hero-metric">
           <div class="hero-metric-row">
-            <span class="hero-metric-value">3×</span>
+            <span class="hero-metric-value" data-value="3" data-suffix="×">0</span>
             <span class="hero-metric-trend" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 14l5-5 5 5"/>
@@ -658,7 +690,6 @@
 
   <!-- Filtry -->
   <section class="filters-section">
-    <h2>Filtrovat podle kategorie</h2>
     <div class="filters" id="filters">
       <button class="filter-btn active" data-filter="all">Všechny</button>
       <button class="filter-btn" data-filter="ai">AI &amp; Automatizace</button>
@@ -681,6 +712,7 @@
         <button class="modal-close" id="modalClose" aria-label="Zavřít">&times;</button>
         <span class="category-tag" id="modalTag"></span>
         <h2 id="modalTitle"></h2>
+        <div class="modal-header-results" id="modalResults"></div>
       </div>
       <div class="modal-body" id="modalBody"></div>
     </div>
@@ -991,11 +1023,23 @@
     const modalOverlay = document.getElementById('modalOverlay');
     const modalTag = document.getElementById('modalTag');
     const modalTitle = document.getElementById('modalTitle');
+    const modalResults = document.getElementById('modalResults');
     const modalBody = document.getElementById('modalBody');
     const modalClose = document.getElementById('modalClose');
     const filterBtns = document.querySelectorAll('.filter-btn');
 
     let activeFilter = 'all';
+
+    function formatResultBadge(text, forModal = false) {
+      const trimmed = text.trim();
+      let icon = '';
+      if (/^[−\-]/.test(trimmed)) {
+        icon = '<span class="result-badge-icon" aria-hidden="true">↓</span>';
+      } else if (/^\+/.test(trimmed)) {
+        icon = '<span class="result-badge-icon" aria-hidden="true">↑</span>';
+      }
+      return `<span class="result-badge">${icon}${text}</span>`;
+    }
 
     function renderCards(filter) {
       grid.innerHTML = '';
@@ -1021,7 +1065,7 @@
             <h3>${uc.title}</h3>
             <p class="excerpt">${uc.excerpt}</p>
             <div class="results">
-              ${uc.results.map(r => `<span class="result-badge">${r}</span>`).join('')}
+              ${uc.results.map(r => formatResultBadge(r)).join('')}
             </div>
             <button class="btn-read" data-id="${uc.id}">Číst více</button>
           </div>
@@ -1041,13 +1085,8 @@
       modalTag.textContent = uc.categoryLabel;
       modalTag.className = 'category-tag ' + uc.tagClass;
       modalTitle.textContent = uc.title;
-
-      modalBody.innerHTML = `
-        <div class="modal-results">
-          ${uc.results.map(r => `<span class="result-badge">${r}</span>`).join('')}
-        </div>
-        ${uc.fullText}
-      `;
+      modalResults.innerHTML = uc.results.map(r => formatResultBadge(r, true)).join('');
+      modalBody.innerHTML = uc.fullText;
 
       modalOverlay.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1076,6 +1115,46 @@
     });
 
     renderCards('all');
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function initHeroCounters() {
+      const counters = document.querySelectorAll('.hero-card .hero-metric-value[data-value]');
+      if (!counters.length) return;
+
+      const items = Array.from(counters).map(el => ({
+        el,
+        target: Number(el.dataset.value),
+        prefix: el.dataset.prefix || '',
+        suffix: el.dataset.suffix || ''
+      }));
+
+      const duration = 2000;
+      const start = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = easeOutCubic(progress);
+
+        items.forEach(({ el, target, prefix, suffix }) => {
+          if (progress < 1) {
+            el.textContent = String(Math.round(eased * target));
+          } else {
+            el.textContent = prefix + target + suffix;
+          }
+        });
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    initHeroCounters();
   </script>
 </body>
 </html>
