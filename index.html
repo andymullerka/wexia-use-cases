@@ -216,59 +216,32 @@
 
     /* ── Filters ── */
     .filters-section {
-      padding: 24px 5% 0;
+      padding: 24px 5% 0.75rem;
       background: var(--white);
       margin-top: -1px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    }
-
-    .filters-block {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      padding-bottom: 1.5rem;
-    }
-
-    .filter-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      gap: 0.75rem;
-    }
-
-    .filter-row-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--gray);
-      width: 100%;
-      flex-shrink: 0;
     }
 
     .filters {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      flex: 1;
+      gap: 0.75rem;
     }
 
     .filter-btn {
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 0.8125rem;
-      padding: 10px 20px;
+      font-size: 0.875rem;
+      padding: 10px 24px;
       border: none;
       border-radius: 100px;
-      background: #f0f0f0;
-      color: #555;
+      background: #f5f5f5;
+      color: var(--dark);
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
     }
 
     .filter-btn:hover:not(.active) {
       background: #e0e0e0;
-      color: var(--dark);
     }
 
     .filter-btn.active {
@@ -276,20 +249,9 @@
       color: var(--white);
     }
 
-    @media (min-width: 640px) {
-      .filter-row {
-        align-items: center;
-      }
-
-      .filter-row-label {
-        width: 160px;
-        margin-top: 0;
-      }
-    }
-
     /* ── Grid ── */
     .cases-section {
-      padding: 2rem 5% 5rem;
+      padding: 1.25rem 5% 5rem;
       background: var(--light);
     }
 
@@ -728,40 +690,19 @@
 
   <!-- Filtry -->
   <section class="filters-section">
-    <div class="filters-block">
-      <div class="filter-row">
-        <span class="filter-row-label">Typ řešení</span>
-        <div class="filters" id="filtersTyp">
-          <button class="filter-btn active" data-filter-typ="all">Vše</button>
-          <button class="filter-btn" data-filter-typ="ai-asistent">AI asistent &amp; chatbot</button>
-          <button class="filter-btn" data-filter-typ="automatizace">Automatizace procesů</button>
-          <button class="filter-btn" data-filter-typ="crm">CRM &amp; datové systémy</button>
-          <button class="filter-btn" data-filter-typ="eshop">E-shop &amp; web</button>
-          <button class="filter-btn" data-filter-typ="google-workspace">Google Workspace</button>
-          <button class="filter-btn" data-filter-typ="mentoring">Mentoring &amp; konzultace</button>
-        </div>
-      </div>
-      <div class="filter-row">
-        <span class="filter-row-label">Odvětví</span>
-        <div class="filters" id="filtersOdvetvi">
-          <button class="filter-btn active" data-filter-odvetvi="all">Vše</button>
-          <button class="filter-btn" data-filter-odvetvi="finance">Finanční poradenství</button>
-          <button class="filter-btn" data-filter-odvetvi="ecommerce">E-commerce</button>
-          <button class="filter-btn" data-filter-odvetvi="spedice">Spedice &amp; logistika</button>
-          <button class="filter-btn" data-filter-odvetvi="vzdelavani">Vzdělávání</button>
-          <button class="filter-btn" data-filter-odvetvi="media">Média</button>
-          <button class="filter-btn" data-filter-odvetvi="technologie">Technologie</button>
-          <button class="filter-btn" data-filter-odvetvi="inovace">Inovace &amp; věda</button>
-          <button class="filter-btn" data-filter-odvetvi="podnikatel">Podnikatel / OSVČ</button>
-        </div>
-      </div>
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-filter="all">Všechny</button>
+      <button class="filter-btn" data-filter="ai">AI &amp; Automatizace</button>
+      <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+      <button class="filter-btn" data-filter="marketing">Marketing</button>
+      <button class="filter-btn" data-filter="web">Web &amp; Aplikace</button>
     </div>
   </section>
 
   <!-- Grid karet -->
   <section class="cases-section">
     <div class="cases-grid" id="casesGrid"></div>
-    <p class="no-results" id="noResults">Pro tuto kombinaci filtrů nemáme žádné use cases.</p>
+    <p class="no-results" id="noResults">V této kategorii zatím nemáme žádné use cases.</p>
   </section>
 
   <!-- Modal -->
@@ -802,8 +743,6 @@
       {
         id: 1,
         category: 'ai',
-        typ: 'ai-asistent',
-        odvetvi: 'ecommerce',
         categoryLabel: 'AI & Automatizace',
         tagClass: 'tag-ai',
         title: 'AI chatbot pro zákaznickou podporu',
@@ -827,8 +766,6 @@
       {
         id: 2,
         category: 'ai',
-        typ: 'automatizace',
-        odvetvi: 'technologie',
         categoryLabel: 'AI & Automatizace',
         tagClass: 'tag-ai',
         title: 'Automatizace fakturace ve výrobní firmě',
@@ -852,8 +789,6 @@
       {
         id: 3,
         category: 'ai',
-        typ: 'crm',
-        odvetvi: 'spedice',
         categoryLabel: 'AI & Automatizace',
         tagClass: 'tag-ai',
         title: 'Prediktivní analýza pro logistiku',
@@ -877,8 +812,6 @@
       {
         id: 4,
         category: 'ecommerce',
-        typ: 'eshop',
-        odvetvi: 'ecommerce',
         categoryLabel: 'E-commerce',
         tagClass: 'tag-ecommerce',
         title: 'Redesign e-shopu módní značky',
@@ -902,8 +835,6 @@
       {
         id: 5,
         category: 'ecommerce',
-        typ: 'eshop',
-        odvetvi: 'ecommerce',
         categoryLabel: 'E-commerce',
         tagClass: 'tag-ecommerce',
         title: 'Marketplace integrace pro B2B distributora',
@@ -927,8 +858,6 @@
       {
         id: 6,
         category: 'ecommerce',
-        typ: 'ai-asistent',
-        odvetvi: 'ecommerce',
         categoryLabel: 'E-commerce',
         tagClass: 'tag-ecommerce',
         title: 'Personalizace produktových doporučení',
@@ -952,8 +881,6 @@
       {
         id: 7,
         category: 'marketing',
-        typ: 'mentoring',
-        odvetvi: 'technologie',
         categoryLabel: 'Marketing',
         tagClass: 'tag-marketing',
         title: 'Performance kampaň pro SaaS startup',
@@ -977,8 +904,6 @@
       {
         id: 8,
         category: 'marketing',
-        typ: 'eshop',
-        odvetvi: 'media',
         categoryLabel: 'Marketing',
         tagClass: 'tag-marketing',
         title: 'Rebranding a launch kampaně',
@@ -1002,8 +927,6 @@
       {
         id: 9,
         category: 'marketing',
-        typ: 'mentoring',
-        odvetvi: 'finance',
         categoryLabel: 'Marketing',
         tagClass: 'tag-marketing',
         title: 'Obsahová strategie pro finanční poradce',
@@ -1027,8 +950,6 @@
       {
         id: 10,
         category: 'web',
-        typ: 'eshop',
-        odvetvi: 'podnikatel',
         categoryLabel: 'Web & Aplikace',
         tagClass: 'tag-web',
         title: 'Mobilní aplikace pro rezervace',
@@ -1052,8 +973,6 @@
       {
         id: 11,
         category: 'web',
-        typ: 'crm',
-        odvetvi: 'technologie',
         categoryLabel: 'Web & Aplikace',
         tagClass: 'tag-web',
         title: 'Interní portál pro nadnárodní firmu',
@@ -1077,8 +996,6 @@
       {
         id: 12,
         category: 'web',
-        typ: 'eshop',
-        odvetvi: 'podnikatel',
         categoryLabel: 'Web & Aplikace',
         tagClass: 'tag-web',
         title: 'Web pro architektonické studio',
@@ -1109,11 +1026,9 @@
     const modalResults = document.getElementById('modalResults');
     const modalBody = document.getElementById('modalBody');
     const modalClose = document.getElementById('modalClose');
-    const filterTypBtns = document.querySelectorAll('#filtersTyp .filter-btn');
-    const filterOdvetviBtns = document.querySelectorAll('#filtersOdvetvi .filter-btn');
+    const filterBtns = document.querySelectorAll('.filter-btn');
 
-    let activeTyp = 'all';
-    let activeOdvetvi = 'all';
+    let activeFilter = 'all';
 
     function formatResultBadge(text, forModal = false) {
       const trimmed = text.trim();
@@ -1126,14 +1041,23 @@
       return `<span class="result-badge">${icon}${text}</span>`;
     }
 
-    function renderCards() {
+    function renderCards(filter) {
       grid.innerHTML = '';
+      const filtered = filter === 'all'
+        ? useCases
+        : useCases.filter(c => c.category === filter);
 
-      useCases.forEach(uc => {
+      if (filtered.length === 0) {
+        noResults.classList.add('visible');
+        return;
+      }
+
+      noResults.classList.remove('visible');
+
+      filtered.forEach(uc => {
         const card = document.createElement('article');
         card.className = 'case-card';
-        card.dataset.typ = uc.typ;
-        card.dataset.odvetvi = uc.odvetvi;
+        card.dataset.category = uc.category;
         card.innerHTML = `
           <div class="card-top"></div>
           <div class="card-body">
@@ -1152,23 +1076,6 @@
       document.querySelectorAll('.btn-read').forEach(btn => {
         btn.addEventListener('click', () => openModal(parseInt(btn.dataset.id)));
       });
-
-      applyFilters();
-    }
-
-    function applyFilters() {
-      const cards = grid.querySelectorAll('.case-card');
-      let visibleCount = 0;
-
-      cards.forEach(card => {
-        const typMatch = activeTyp === 'all' || card.dataset.typ === activeTyp;
-        const odvetviMatch = activeOdvetvi === 'all' || card.dataset.odvetvi === activeOdvetvi;
-        const show = typMatch && odvetviMatch;
-        card.classList.toggle('hidden', !show);
-        if (show) visibleCount++;
-      });
-
-      noResults.classList.toggle('visible', visibleCount === 0);
     }
 
     function openModal(id) {
@@ -1190,21 +1097,12 @@
       document.body.style.overflow = '';
     }
 
-    filterTypBtns.forEach(btn => {
+    filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterTypBtns.forEach(b => b.classList.remove('active'));
+        filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        activeTyp = btn.dataset.filterTyp;
-        applyFilters();
-      });
-    });
-
-    filterOdvetviBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterOdvetviBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeOdvetvi = btn.dataset.filterOdvetvi;
-        applyFilters();
+        activeFilter = btn.dataset.filter;
+        renderCards(activeFilter);
       });
     });
 
@@ -1216,7 +1114,7 @@
       if (e.key === 'Escape') closeModal();
     });
 
-    renderCards();
+    renderCards('all');
 
     function easeOutCubic(t) {
       return 1 - Math.pow(1 - t, 3);
