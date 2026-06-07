@@ -1110,9 +1110,23 @@
       'mentoring': 'images/card-mentoring.png'
     };
 
+    const typLabels = {
+      'ai-asistent': 'AI ASISTENT',
+      'automatizace': 'AUTOMATIZACE',
+      'crm-data': 'CRM & DATA',
+      'eshop-web': 'E-SHOP & WEB',
+      'google-workspace': 'GOOGLE WORKSPACE',
+      'mentoring': 'MENTORING & KONZULTACE'
+    };
+
     function getCardImage(typString) {
       const primary = getPrimaryTyp(typString);
       return typImages[primary] || typImages['ai-asistent'];
+    }
+
+    function getCategoryBadgeLabel(typString) {
+      const primary = getPrimaryTyp(typString);
+      return typLabels[primary] || typLabels['ai-asistent'];
     }
 
     function matchesTypFilter(typString, filter) {
@@ -1144,7 +1158,7 @@
         card.innerHTML = `
           <div class="card-visual">
             <img src="${getCardImage(uc.typ)}" alt="${uc.categoryLabel}">
-            <span class="card-visual-badge">${uc.categoryLabel}</span>
+            <span class="card-visual-badge">${getCategoryBadgeLabel(uc.typ)}</span>
           </div>
           <div class="card-body">
             ${uc.client ? `<p class="card-client">${uc.client}</p>` : ''}
