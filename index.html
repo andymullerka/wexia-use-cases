@@ -423,6 +423,28 @@
       color: var(--white);
     }
 
+    .case-card-first .card-client {
+      font-size: 10px;
+      opacity: 0.6;
+    }
+
+    .case-card-first .card-body h3 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .case-card-first .results {
+      margin-bottom: 1rem;
+    }
+
+    .case-card-first .btn-read {
+      padding: 10px 22px;
+      font-size: 0.8125rem;
+      line-height: 1.4;
+      text-decoration: none;
+      margin-top: auto;
+    }
+
     .no-results {
       grid-column: 1 / -1;
       text-align: center;
@@ -575,66 +597,65 @@
 
     /* ── Footer ── */
     .footer {
-      background: var(--dark);
+      background: #231F20;
       color: var(--white);
-      padding: 3.5rem 5%;
-      clip-path: polygon(0 24px, 100% 0, 100% 100%, 0 100%);
+      padding: 2rem 5%;
     }
 
     .footer-inner {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: flex-start;
       flex-wrap: wrap;
-      gap: 2rem;
+      gap: 1.25rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-bottom: 1.25rem;
+      border-bottom: 2px solid #B12028;
     }
 
-    .footer-brand .logo {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1.15rem;
-      letter-spacing: 0.12em;
-      color: var(--white);
-      margin-bottom: 0.75rem;
+    .footer-logo img {
+      height: 64px;
+      width: auto;
       display: block;
     }
 
-    .footer-brand .logo span {
-      color: var(--beige);
+    .footer-meta {
+      font-size: 0.875rem;
+      line-height: 1.5;
     }
 
-    .footer-brand p {
-      font-size: 0.9rem;
-      color: var(--beige);
-      max-width: 320px;
+    .footer-contact {
+      margin: 0;
     }
 
-    .footer-contact h4 {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--beige);
-      margin-bottom: 1rem;
-    }
-
-    .footer-contact p,
     .footer-contact a {
-      font-size: 0.9rem;
       color: var(--white);
-      display: block;
-      margin-bottom: 0.4rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .footer-contact a:hover {
-      color: var(--beige);
+      color: #B12028;
     }
 
-    .footer-bottom {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(225, 184, 140, 0.2);
-      font-size: 0.8rem;
-      color: var(--gray);
+    .footer-sep {
+      color: #B12028;
+      margin: 0 0.625rem;
+    }
+
+    .footer-address {
+      margin: 0.35rem 0 0;
+      font-size: 0.8125rem;
+      opacity: 0.75;
+    }
+
+    .footer-copy {
+      max-width: 1200px;
+      margin: 1rem auto 0;
+      font-size: 0.75rem;
+      opacity: 0.55;
+      text-align: center;
     }
 
     /* ── Responsive ── */
@@ -768,21 +789,19 @@
   <!-- Footer -->
   <footer class="footer" id="kontakt">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="logo">WEXIA <span>DIGITAL</span></span>
-        <p>Digitální agentura, která propojuje strategii, design a technologie. Pomáháme firmám růst v digitálním světě.</p>
-      </div>
-      <div class="footer-contact">
-        <h4>Kontakt</h4>
-        <p>Wexia Digital s.r.o.</p>
-        <p>Václavské náměstí 1, 110 00 Praha 1</p>
-        <a href="mailto:hello@wexiadigital.cz">hello@wexiadigital.cz</a>
-        <a href="tel:+420777123456">+420 777 123 456</a>
+      <a class="footer-logo" href="#" aria-label="Wexia Digital">
+        <img src="wexia_red_RGB.svg" alt="Wexia Digital" height="64">
+      </a>
+      <div class="footer-meta">
+        <p class="footer-contact">
+          <a href="tel:+420775791585">+420 775 791 585</a>
+          <span class="footer-sep" aria-hidden="true">|</span>
+          <a href="mailto:info@wexia.digital">info@wexia.digital</a>
+        </p>
+        <p class="footer-address">Krajinská 44/10, České Budějovice, 370 01</p>
       </div>
     </div>
-    <div class="footer-bottom">
-      &copy; 2026 Wexia Digital. Všechna práva vyhrazena.
-    </div>
+    <p class="footer-copy">&copy; 2026 Wexia Digital s.r.o. Všechna práva vyhrazena.</p>
   </footer>
 
   <script>
@@ -796,7 +815,7 @@
         client: 'Martin Vlach, investiční specialista',
         title: 'Když web přestane být jen vizitkou',
         excerpt: 'Virtuální asistentka Ema provede návštěvníka rozhovorem, spočítá investiční scénáře a ve správný moment propojí zájemce přímo s Martinem. Schůzka začíná tam, kde dřív trvalo desítky minut se dostat.',
-        results: ['↑ Kvalitnější leady', '↑ Připravenější klienti na schůzku'],
+        results: ['↑ Kvalita leadů', '↑ Připravenost klientů'],
         link: 'use-cases/martin-vlach-ema.html'
       },
       {
@@ -1162,7 +1181,7 @@
       filtered.forEach(uc => {
         const theme = getCardTheme(uc.typ);
         const card = document.createElement('article');
-        card.className = 'case-card';
+        card.className = uc.id === 1 ? 'case-card case-card-first' : 'case-card';
         card.dataset.typ = uc.typ;
         card.style.setProperty('--card-accent', theme.accent);
         card.style.setProperty('--card-bg', theme.bg);
