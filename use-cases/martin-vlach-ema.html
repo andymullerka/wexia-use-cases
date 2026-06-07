@@ -58,7 +58,10 @@
 
     /* ── Back link ── */
     .back-bar {
-      padding: 1.25rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0.75rem 5%;
       background: var(--white);
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     }
@@ -85,7 +88,7 @@
     /* ── Hero ── */
     .hero {
       position: relative;
-      min-height: 380px;
+      min-height: 480px;
       display: flex;
       align-items: center;
       background: linear-gradient(160deg, #B12028 0%, #8B1520 100%);
@@ -208,11 +211,11 @@
     /* ── Challenge glass card ── */
     .challenge-card {
       margin-top: 2rem;
-      padding: 2rem 2.25rem;
-      background: rgba(177, 32, 40, 0.04);
-      border: 1px solid rgba(177, 32, 40, 0.12);
-      border-radius: 12px;
-      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+      background: rgba(225, 184, 140, 0.12);
+      border: 1px solid rgba(225, 184, 140, 0.35);
+      border-left: 4px solid #E1B88C;
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem 1.75rem;
     }
 
     .challenge-card p {
@@ -230,10 +233,13 @@
     }
 
     .step-card {
+      position: relative;
+      overflow: hidden;
       background: var(--white);
       border: 1px solid rgba(0, 0, 0, 0.06);
+      border-top: 3px solid #B12028;
       border-radius: 12px;
-      padding: 1.75rem;
+      padding: 1.25rem;
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -241,6 +247,17 @@
     .step-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .step-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 20px;
+      color: #B12028;
+      opacity: 0.15;
+      line-height: 1;
+      pointer-events: none;
     }
 
     .step-number {
@@ -255,7 +272,7 @@
       font-weight: 700;
       font-size: 0.9rem;
       margin-bottom: 1rem;
-      clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      border-radius: 8px;
     }
 
     .step-card h3 {
@@ -297,47 +314,55 @@
     .compare-card {
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
       display: flex;
       flex-direction: column;
     }
 
-    .compare-card-top {
-      height: 6px;
-      border-radius: 12px 12px 0 0;
+    .compare-card-header {
+      padding: 1.25rem 2rem;
     }
 
-    .compare-card.before .compare-card-top {
-      background: var(--gray);
+    .compare-card.before .compare-card-header {
+      background: rgba(0, 0, 0, 0.35);
     }
 
-    .compare-card.after .compare-card-top {
-      background: var(--red);
+    .compare-card.after .compare-card-header {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .compare-eyebrow {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 0.35rem;
+    }
+
+    .compare-card.before .compare-title,
+    .compare-card.after .compare-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
     }
 
     .compare-card-body {
       padding: 2rem;
       flex: 1;
-      background: var(--white);
-      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .compare-card.before .compare-card-body {
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .compare-card.after .compare-card-body {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-top: none;
-      border-radius: 0 0 12px 12px;
-    }
-
-    .compare-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.25rem;
-    }
-
-    .compare-card.before .compare-label {
-      color: var(--gray);
-    }
-
-    .compare-card.after .compare-label {
-      color: var(--red);
     }
 
     .compare-list {
@@ -346,30 +371,76 @@
 
     .compare-list li {
       position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.85rem;
+      padding: 0.85rem 0 0.85rem 1.75rem;
       font-size: 0.95rem;
-      color: #555;
       line-height: 1.5;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .compare-card.before .compare-list li {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .compare-card.after .compare-list li {
+      color: #ffffff;
+    }
+
+    .compare-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .compare-list li:first-child {
+      padding-top: 0;
     }
 
     .compare-list li::before {
-      content: '';
       position: absolute;
       left: 0;
-      top: 0.55em;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
+      top: 0.85rem;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .compare-list li:first-child::before {
+      top: 0;
     }
 
     .compare-card.before .compare-list li::before {
-      background: var(--gray);
-      opacity: 0.5;
+      content: '✕';
+      color: rgba(255, 255, 255, 0.3);
     }
 
     .compare-card.after .compare-list li::before {
-      background: var(--red);
+      content: '✓';
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .section-before-after {
+      position: relative;
+      background: #B12028;
+      padding: 5rem 0;
+    }
+
+    .section-deco {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.08;
+    }
+
+    .section-before-after .section-label {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .section-before-after .section-label::before {
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .section-before-after h2 {
+      color: #ffffff;
     }
 
     /* ── Impact ── */
@@ -410,7 +481,6 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      clip-path: polygon(0 24px, 100% 0, 100% 100%, 0 100%);
     }
 
     .cta-section::before {
@@ -569,7 +639,6 @@
       <circle cx="1180" cy="90" r="120" fill="none" stroke="#FFFFFF" stroke-width="1"/>
     </svg>
     <div class="hero-content container">
-      <span class="hero-category">Finanční poradenství</span>
       <h1>Když web přestane být jen vizitkou</h1>
       <div class="hero-divider"></div>
       <p class="hero-subtitle">Martin Vlach, investiční specialista · AI kalkulačka Ema</p>
@@ -599,21 +668,25 @@
       </div>
       <div class="steps-grid">
         <article class="step-card">
+          <span class="step-icon" aria-hidden="true">💬</span>
           <span class="step-number">01</span>
           <h3>Návštěvník popíše situaci</h3>
           <p>Ema přivítá uživatele a zeptá se na jeho investiční cíle, časový horizont a aktuální situaci — v běžné řeči, ne v bankovní terminologii.</p>
         </article>
         <article class="step-card">
+          <span class="step-icon" aria-hidden="true">❓</span>
           <span class="step-number">02</span>
           <h3>Asistentka klade doplňující otázky</h3>
           <p>Na základě odpovědí Ema reaguje kontextově, upřesňuje detaily a vysvětluje souvislosti, které by u statického formuláře zůstaly nezodpovězené.</p>
         </article>
         <article class="step-card">
+          <span class="step-icon" aria-hidden="true">📊</span>
           <span class="step-number">03</span>
           <h3>Personalizovaný přehled výsledků</h3>
           <p>Návštěvník dostane srozumitelný souhrn — co by pro něj mohlo dávat smysl, jaké jsou možnosti a na co si dát pozor. Bez závazku, bez tlaku.</p>
         </article>
         <article class="step-card">
+          <span class="step-icon" aria-hidden="true">📅</span>
           <span class="step-number">04</span>
           <h3>Plynulý přechod ke schůzce</h3>
           <p>Zájemce, který je připravený na další krok, může rovnou rezervovat termín s Martinem. Ema předá kvalifikovaný lead včetně kontextu celého rozhovoru.</p>
@@ -623,15 +696,22 @@
   </section>
 
   <!-- Před a po -->
-  <section class="section">
+  <section class="section section-before-after">
+    <svg class="section-deco" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,120 C360,40 720,200 1080,100 C1260,60 1380,80 1440,120" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+      <path d="M0,280 C480,360 960,180 1440,300" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+      <circle cx="1180" cy="90" r="120" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    </svg>
     <div class="container">
       <span class="section-label">Před a po</span>
       <h2>Co se změnilo</h2>
       <div class="compare-grid">
         <article class="compare-card before">
-          <div class="compare-card-top"></div>
+          <div class="compare-card-header">
+            <span class="compare-eyebrow">Situace před</span>
+            <p class="compare-title">Dříve</p>
+          </div>
           <div class="compare-card-body">
-            <p class="compare-label">Dříve</p>
             <ul class="compare-list">
               <li>Statický kontaktní formulář bez interakce</li>
               <li>Návštěvníci odcházeli bez odpovědi na klíčové otázky</li>
@@ -642,9 +722,11 @@
           </div>
         </article>
         <article class="compare-card after">
-          <div class="compare-card-top"></div>
+          <div class="compare-card-header">
+            <span class="compare-eyebrow">Situace dnes</span>
+            <p class="compare-title">Dnes</p>
+          </div>
           <div class="compare-card-body">
-            <p class="compare-label">Dnes</p>
             <ul class="compare-list">
               <li>Ema vede dialog a buduje důvěru krok za krokem</li>
               <li>Návštěvník dostane odpovědi ještě před schůzkou</li>
