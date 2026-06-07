@@ -57,6 +57,18 @@
       overflow: hidden;
     }
 
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.08;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 420' preserveAspectRatio='none'%3E%3Cpath d='M0,120 C360,40 720,200 1080,100 C1260,60 1380,80 1440,120' fill='none' stroke='%23FFFFFF' stroke-width='1.5'/%3E%3Cpath d='M0,280 C480,360 960,180 1440,300' fill='none' stroke='%23FFFFFF' stroke-width='1.5'/%3E%3Cpath d='M200,0 C400,160 600,80 900,220 S1300,320 1440,420' fill='none' stroke='%23FFFFFF' stroke-width='1'/%3E%3Ccircle cx='1180' cy='90' r='120' fill='none' stroke='%23FFFFFF' stroke-width='1'/%3E%3Ccircle cx='280' cy='340' r='80' fill='none' stroke='%23FFFFFF' stroke-width='1'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
     .hero::after {
       content: '';
       position: absolute;
@@ -69,15 +81,6 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 72' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C360,72 720,8 1080,48 C1260,64 1380,56 1440,40 L1440,72 L0,72 Z' fill='%23ffffff'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-size: 100% 100%;
-    }
-
-    .hero-deco {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      opacity: 0.08;
     }
 
     .hero-inner {
@@ -684,14 +687,6 @@
 
   <!-- Hero -->
   <section class="hero">
-    <svg class="hero-deco" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,120 C360,40 720,200 1080,100 C1260,60 1380,80 1440,120" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
-      <path d="M0,280 C480,360 960,180 1440,300" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
-      <path d="M200,0 C400,160 600,80 900,220 S1300,320 1440,420" fill="none" stroke="#FFFFFF" stroke-width="1"/>
-      <circle cx="1180" cy="90" r="120" fill="none" stroke="#FFFFFF" stroke-width="1"/>
-      <circle cx="280" cy="340" r="80" fill="none" stroke="#FFFFFF" stroke-width="1"/>
-    </svg>
-
     <div class="hero-inner">
       <div class="hero-left">
         <p class="hero-eyebrow"><span class="hero-eyebrow-mark" aria-hidden="true"></span>Případové studie</p>
