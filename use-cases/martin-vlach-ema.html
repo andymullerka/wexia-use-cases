@@ -185,6 +185,41 @@
       line-height: 1.55;
     }
 
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-badge {
+      animation: fadeUp 0.5s ease forwards;
+      animation-delay: 0.1s;
+      opacity: 0;
+    }
+
+    .hero h1 {
+      animation: fadeUp 0.5s ease forwards;
+      animation-delay: 0.25s;
+      opacity: 0;
+    }
+
+    .hero-divider {
+      animation: fadeUp 0.5s ease forwards;
+      animation-delay: 0.4s;
+      opacity: 0;
+    }
+
+    .hero-subtitle {
+      animation: fadeUp 0.5s ease forwards;
+      animation-delay: 0.52s;
+      opacity: 0;
+    }
+
     /* ── Sections ── */
     .section {
       padding: 5rem 0;
@@ -444,6 +479,21 @@
       color: rgba(255, 255, 255, 0.95);
     }
 
+    .compare-list li {
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .compare-card.after .compare-list li {
+      transform: translateX(10px);
+    }
+
+    .compare-list li.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
     .section-before-after {
       position: relative;
       padding-top: 0;
@@ -501,6 +551,54 @@
     .impact-conclusion {
       margin-top: 2rem;
       max-width: 720px;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .impact-card {
+      background: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-top: 3px solid var(--red);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .impact-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(177, 32, 40, 0.08);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+      color: var(--red);
+    }
+
+    .impact-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .impact-card .impact-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: #231F20;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .impact-card .impact-desc {
+      font-size: 11px;
+      color: #888888;
+      line-height: 1.5;
+      max-width: none;
     }
 
     /* ── CTA ── */
@@ -786,11 +884,33 @@
     <div class="container">
       <span class="section-label">Dopad</span>
       <h2>Výsledky, které mluví za vše</h2>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="impact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <p class="impact-title">Web jako aktivní člen týmu</p>
+          <p class="impact-desc">Přestal čekat — teď sám získává a kvalifikuje klienty.</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <p class="impact-title">Klienti přicházejí připravení</p>
+          <p class="impact-desc">Dialog s Emou dává jistotu a vede k rozhodnutí ještě před schůzkou.</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <p class="impact-title">Martin v roli experta</p>
+          <p class="impact-desc">Soustředí se na osobní poradenství — ne na kvalifikaci každého leadu.</p>
+        </div>
+      </div>
       <div class="quote-block">
         <blockquote>„Ema dělá na webu práci, kterou bych jinak dělal já osobně — jen dělá ji hned, pro každého návštěvníka, ve tři ráno i v neděli."</blockquote>
         <cite>— Martin Vlach, investiční specialista</cite>
       </div>
-      <p class="impact-conclusion">Web přestal být pasivní vizitkou a stal se aktivním členem týmu. Návštěvníci, kteří dříve odcházeli bez odpovědi, dnes procházejí dialogem s Emou, získávají jistotu a sami se rozhodují pro další krok. Martin se může soustředit na to, v čem je nejlepší — osobní poradenství s klienty, kteří už přicházejí připravení.</p>
     </div>
   </section>
 
@@ -819,6 +939,25 @@
     </div>
     <p class="footer-copy">&copy; 2026 Wexia Digital s.r.o. Všechna práva vyhrazena.</p>
   </footer>
+
+  <script>
+    const listItems = document.querySelectorAll('.compare-list li');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const items = entry.target.querySelectorAll('.compare-list li');
+          items.forEach((item, i) => {
+            setTimeout(() => item.classList.add('visible'), i * 100);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.compare-grid').forEach(grid => {
+      observer.observe(grid);
+    });
+  </script>
 
 </body>
 </html>
