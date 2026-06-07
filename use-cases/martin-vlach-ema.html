@@ -125,6 +125,30 @@
       max-width: 800px;
     }
 
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 100px;
+      padding: 5px 14px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--beige);
+      flex-shrink: 0;
+    }
+
     .hero-category {
       display: inline-block;
       font-size: 12px;
@@ -253,11 +277,15 @@
       position: absolute;
       top: 1rem;
       right: 1rem;
-      font-size: 20px;
-      color: #B12028;
-      opacity: 0.15;
-      line-height: 1;
-      pointer-events: none;
+      width: 22px;
+      height: 22px;
+      opacity: 0.2;
+      color: var(--red);
+    }
+
+    .step-icon svg {
+      width: 100%;
+      height: 100%;
     }
 
     .step-number {
@@ -418,8 +446,9 @@
 
     .section-before-after {
       position: relative;
+      padding-top: 0;
+      padding-bottom: 0;
       background: #B12028;
-      padding: 5rem 0;
     }
 
     .section-deco {
@@ -639,6 +668,10 @@
       <circle cx="1180" cy="90" r="120" fill="none" stroke="#FFFFFF" stroke-width="1"/>
     </svg>
     <div class="hero-content container">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        AI asistent & chatbot · Finanční poradenství
+      </div>
       <h1>Když web přestane být jen vizitkou</h1>
       <div class="hero-divider"></div>
       <p class="hero-subtitle">Martin Vlach, investiční specialista · AI kalkulačka Ema</p>
@@ -663,30 +696,36 @@
     <div class="container">
       <span class="section-label">Řešení</span>
       <h2>Virtuální asistentka Ema, která vede rozhovor místo formuláře</h2>
-      <div class="solution-intro">
-        <p>Navrhli jsme a nasadili AI kalkulačku Ema — inteligentní asistentku, která na webu Martina Vlacha vede přirozený dialog s návštěvníkem. Místo deseti políček formuláře Ema klade otázky postupně, vysvětluje pojmy srozumitelně a na konci nabídne konkrétní další krok — domluvu schůzky s Martinem.</p>
-      </div>
+      <p>Navrhli jsme a nasadili AI kalkulačku Ema — inteligentní asistentku, která na webu Martina Vlacha vede přirozený dialog s návštěvníkem. Místo deseti políček formuláře Ema klade otázky postupně, vysvětluje pojmy srozumitelně a na konci nabídne konkrétní další krok — domluvu schůzky s Martinem.</p>
       <div class="steps-grid">
         <article class="step-card">
-          <span class="step-icon" aria-hidden="true">💬</span>
+          <span class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </span>
           <span class="step-number">01</span>
           <h3>Návštěvník popíše situaci</h3>
           <p>Ema přivítá uživatele a zeptá se na jeho investiční cíle, časový horizont a aktuální situaci — v běžné řeči, ne v bankovní terminologii.</p>
         </article>
         <article class="step-card">
-          <span class="step-icon" aria-hidden="true">❓</span>
+          <span class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          </span>
           <span class="step-number">02</span>
           <h3>Asistentka klade doplňující otázky</h3>
           <p>Na základě odpovědí Ema reaguje kontextově, upřesňuje detaily a vysvětluje souvislosti, které by u statického formuláře zůstaly nezodpovězené.</p>
         </article>
         <article class="step-card">
-          <span class="step-icon" aria-hidden="true">📊</span>
+          <span class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </span>
           <span class="step-number">03</span>
           <h3>Personalizovaný přehled výsledků</h3>
           <p>Návštěvník dostane srozumitelný souhrn — co by pro něj mohlo dávat smysl, jaké jsou možnosti a na co si dát pozor. Bez závazku, bez tlaku.</p>
         </article>
         <article class="step-card">
-          <span class="step-icon" aria-hidden="true">📅</span>
+          <span class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </span>
           <span class="step-number">04</span>
           <h3>Plynulý přechod ke schůzce</h3>
           <p>Zájemce, který je připravený na další krok, může rovnou rezervovat termín s Martinem. Ema předá kvalifikovaný lead včetně kontextu celého rozhovoru.</p>
@@ -702,6 +741,7 @@
       <path d="M0,280 C480,360 960,180 1440,300" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
       <circle cx="1180" cy="90" r="120" fill="none" stroke="#FFFFFF" stroke-width="1"/>
     </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" preserveAspectRatio="none" style="display:block;width:100%;height:56px;margin-bottom:0;"><path d="M0,0 C360,56 1080,56 1440,0 L1440,0 L0,0 Z" fill="#F7F5F3"/></svg>
     <div class="container">
       <span class="section-label">Před a po</span>
       <h2>Co se změnilo</h2>
@@ -738,6 +778,7 @@
         </article>
       </div>
     </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" preserveAspectRatio="none" style="display:block;width:100%;height:56px;margin-top:0;"><path d="M0,56 C360,0 1080,0 1440,56 L1440,56 L0,56 Z" fill="#F7F5F3"/></svg>
   </section>
 
   <!-- Dopad -->
