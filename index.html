@@ -152,6 +152,10 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     }
 
+    .hero-stats {
+      transition: transform 0.15s ease;
+    }
+
     .hero-card-title {
       display: flex;
       align-items: center;
@@ -695,7 +699,7 @@
         <p class="hero-subtitle">Nejsou to jen sliby — ukazujeme měřitelné dopady z projektů, které jsme realizovali pro naše klienty napříč odvětvími.</p>
       </div>
 
-      <div class="hero-card">
+      <div class="hero-card hero-stats">
         <h2 class="hero-card-title"><span class="hero-card-dot"></span>VÝSLEDKY PROJEKTŮ</h2>
         <div class="hero-metric">
           <div class="hero-metric-row">
@@ -1275,6 +1279,19 @@
     }
 
     initHeroCounters();
+
+    const statsCard = document.querySelector('.hero-stats');
+    if (statsCard) {
+      statsCard.addEventListener('mousemove', (e) => {
+        const rect = statsCard.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        statsCard.style.transform = `perspective(600px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) scale(1.02)`;
+      });
+      statsCard.addEventListener('mouseleave', () => {
+        statsCard.style.transform = 'perspective(600px) rotateY(0deg) rotateX(0deg) scale(1)';
+      });
+    }
   </script>
 </body>
 </html>
