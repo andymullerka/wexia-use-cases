@@ -263,6 +263,9 @@
     }
 
     .case-card {
+      --card-accent: #B12028;
+      --card-bg: #fff5f5;
+      --card-pill-border: #f0b4b6;
       background: var(--white);
       border: 1px solid rgba(0, 0, 0, 0.06);
       border-radius: 12px;
@@ -271,7 +274,6 @@
       overflow: hidden;
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
       opacity: 1;
       transform: translateY(0);
     }
@@ -285,98 +287,119 @@
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
     }
 
-    .card-top {
-      height: 6px;
-      background: var(--red);
-      border-radius: 12px 12px 0 0;
+    .card-visual {
+      position: relative;
+      height: 210px;
+      overflow: hidden;
       flex-shrink: 0;
     }
 
+    .card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-visual-badge {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 1;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 5px 11px;
+      border-radius: 100px;
+      background: var(--card-accent);
+      color: var(--white);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
     .card-body {
-      padding: 16px 1.75rem 1.75rem;
+      padding: 1.125rem 1.5rem 1.5rem;
       flex: 1;
       display: flex;
       flex-direction: column;
       min-height: 0;
+      border-top: 3px solid var(--card-accent);
     }
 
-    .category-tag {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
+    .card-client {
+      font-size: 11px;
+      font-weight: 600;
+      color: #888;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      padding: 4px 12px;
-      border-radius: 100px;
-      margin: 0 0 16px;
-      align-self: flex-start;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.375rem;
     }
-
-    .tag-ai { background: var(--dark); color: var(--beige); }
-    .tag-ecommerce { background: var(--red); color: var(--white); }
-    .tag-marketing { background: var(--beige); color: var(--dark); }
-    .tag-web { background: var(--dark); color: var(--white); }
 
     .card-body h3 {
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 700;
-      margin-bottom: 0.75rem;
-      line-height: 1.3;
+      margin-bottom: 0.625rem;
+      line-height: 1.35;
       color: #1a1a1a;
     }
 
     .card-body .excerpt {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.55;
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .results {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 1.25rem;
+      gap: 6px;
+      margin-bottom: 1rem;
     }
 
     .result-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.8rem;
+      gap: 5px;
+      font-size: 0.75rem;
       font-weight: 600;
-      padding: 6px 14px;
-      background: rgba(177, 32, 40, 0.07);
-      border: 1px solid rgba(177, 32, 40, 0.15);
+      padding: 5px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-pill-border);
       border-radius: 100px;
-      color: #B12028;
+      color: var(--card-accent);
     }
 
     .result-badge-icon {
       font-weight: 700;
-      color: #B12028;
+      color: var(--card-accent);
       line-height: 1;
       flex-shrink: 0;
     }
 
     .btn-read {
+      display: inline-block;
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       letter-spacing: 0.3px;
-      padding: 12px 28px;
-      background: #B12028;
+      padding: 10px 22px;
+      background: var(--card-accent);
       color: var(--white);
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
       align-self: flex-start;
       margin-top: auto;
-      transition: background 0.2s, color 0.2s;
+      transition: filter 0.2s, color 0.2s;
     }
 
     .btn-read:hover {
-      background: #8B1520;
+      filter: brightness(0.88);
       color: var(--white);
     }
 
@@ -433,6 +456,16 @@
       background: linear-gradient(135deg, #B12028, #8B1520);
       padding: 32px 40px;
       position: relative;
+    }
+
+    .category-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 12px;
+      border-radius: 100px;
     }
 
     .modal-header .category-tag,
@@ -745,26 +778,14 @@
       {
         id: 1,
         category: 'ai',
-        typ: 'ai-asistent eshop-web',
-        categoryLabel: 'AI & Automatizace',
+        typ: 'ai-asistent',
+        categoryLabel: 'AI ASISTENT',
         tagClass: 'tag-ai',
-        title: 'AI chatbot pro zákaznickou podporu',
-        excerpt: 'Implementovali jsme inteligentního chatbota pro e-shop s elektronikou, který zvládá 78 % dotazů bez zásahu operátora. Systém se učí z historických konverzací a neustále se zlepšuje.',
-        results: ['−62 % času odezvy', '+34 % spokojenost zákazníků'],
-        fullText: `
-          <p>Klient — středně velký e-shop s elektronikou — řešil přetíženou zákaznickou linku a pomalé reakční doby. Náš tým navrhl a nasadil AI chatbota integrovaného do webu i WhatsApp kanálu.</p>
-          <h4>Výzva</h4>
-          <p>Ročně přicházelo přes 45 000 dotazů, z nichž 70 % se opakovalo. Operátoři trávili většinu času odpovídáním na stejné otázky o dopravě, reklamacích a kompatibilitě produktů.</p>
-          <h4>Řešení</h4>
-          <ul>
-            <li>NLP model trénovaný na 3 letech historických konverzací</li>
-            <li>Integrace s ERP systémem pro stav objednávek v reálném čase</li>
-            <li>Automatické eskalace složitých případů na lidské operátory</li>
-            <li>Dashboard pro analýzu nejčastějších dotazů a mezer ve znalostech</li>
-          </ul>
-          <h4>Výsledky</h4>
-          <p>Chatbot zpracovává 78 % dotazů samostatně. Průměrná doba odezvy klesla z 4 hodin na 12 sekund. Spokojenost zákazníků vzrostla o 34 % a tým podpory se mohl soustředit na komplexní případy s vyšší hodnotou.</p>
-        `
+        client: 'Martin Vlach, investiční specialista',
+        title: 'Když web přestane být jen vizitkou',
+        excerpt: 'Virtuální asistentka Ema provede návštěvníka rozhovorem, spočítá investiční scénáře a ve správný moment propojí zájemce přímo s Martinem. Schůzka začíná tam, kde dřív trvalo desítky minut se dostat.',
+        results: ['↑ Kvalitnější leady', '↑ Připravenější klienti na schůzku'],
+        link: 'use-cases/martin-vlach-ema.html'
       },
       {
         id: 2,
@@ -1047,12 +1068,51 @@
     function formatResultBadge(text, forModal = false) {
       const trimmed = text.trim();
       let icon = '';
+      let label = trimmed;
       if (/^[−\-]/.test(trimmed)) {
-        icon = '<span class="result-badge-icon" aria-hidden="true">↓</span>';
+        icon = '↓';
+        label = trimmed.replace(/^[−\-]\s*/, '');
+      } else if (/^↑/.test(trimmed)) {
+        icon = '↑';
+        label = trimmed.replace(/^↑\s*/, '');
       } else if (/^\+/.test(trimmed)) {
-        icon = '<span class="result-badge-icon" aria-hidden="true">↑</span>';
+        icon = '↑';
+        label = trimmed.replace(/^\+\s*/, '');
       }
-      return `<span class="result-badge">${icon}${text}</span>`;
+      const iconHtml = icon ? `<span class="result-badge-icon" aria-hidden="true">${icon}</span>` : '';
+      return `<span class="result-badge">${iconHtml}${label}</span>`;
+    }
+
+    function getPrimaryTyp(typString) {
+      return typString.split(/\s+/)[0];
+    }
+
+    const typThemes = {
+      'ai-asistent': { bg: '#fff5f5', accent: '#B12028', pillBorder: '#f0b4b6' },
+      'automatizace': { bg: '#f0faf5', accent: '#2d7a4f', pillBorder: '#9dd4b8' },
+      'crm-data': { bg: '#f0f5ff', accent: '#1a5fa8', pillBorder: '#a8c8eb' },
+      'eshop-web': { bg: '#f8f0ff', accent: '#7b3fa0', pillBorder: '#cdb8e8' },
+      'google-workspace': { bg: '#fff8f0', accent: '#b85c00', pillBorder: '#e8c490' },
+      'mentoring': { bg: '#f0f8fa', accent: '#2d6a7a', pillBorder: '#9ec4ce' }
+    };
+
+    function getCardTheme(typString) {
+      const primary = getPrimaryTyp(typString);
+      return typThemes[primary] || typThemes['ai-asistent'];
+    }
+
+    const typImages = {
+      'ai-asistent': 'images/card-ai-asistent.png',
+      'automatizace': 'images/card-automatizace.png',
+      'crm-data': 'images/card-crm-data.png',
+      'eshop-web': 'images/card-eshop-web.png',
+      'google-workspace': 'images/card-google-workspace.png',
+      'mentoring': 'images/card-mentoring.png'
+    };
+
+    function getCardImage(typString) {
+      const primary = getPrimaryTyp(typString);
+      return typImages[primary] || typImages['ai-asistent'];
     }
 
     function matchesTypFilter(typString, filter) {
@@ -1074,25 +1134,34 @@
       noResults.classList.remove('visible');
 
       filtered.forEach(uc => {
+        const theme = getCardTheme(uc.typ);
         const card = document.createElement('article');
         card.className = 'case-card';
         card.dataset.typ = uc.typ;
+        card.style.setProperty('--card-accent', theme.accent);
+        card.style.setProperty('--card-bg', theme.bg);
+        card.style.setProperty('--card-pill-border', theme.pillBorder);
         card.innerHTML = `
-          <div class="card-top"></div>
+          <div class="card-visual">
+            <img src="${getCardImage(uc.typ)}" alt="${uc.categoryLabel}">
+            <span class="card-visual-badge">${uc.categoryLabel}</span>
+          </div>
           <div class="card-body">
-            <span class="category-tag ${uc.tagClass}">${uc.categoryLabel}</span>
+            ${uc.client ? `<p class="card-client">${uc.client}</p>` : ''}
             <h3>${uc.title}</h3>
             <p class="excerpt">${uc.excerpt}</p>
             <div class="results">
               ${uc.results.map(r => formatResultBadge(r)).join('')}
             </div>
-            <button class="btn-read" data-id="${uc.id}">Číst více</button>
+            ${uc.link
+              ? `<a href="${uc.link}" class="btn-read">Číst více</a>`
+              : `<button class="btn-read" data-id="${uc.id}">Číst více</button>`}
           </div>
         `;
         grid.appendChild(card);
       });
 
-      document.querySelectorAll('.btn-read').forEach(btn => {
+      document.querySelectorAll('.btn-read[data-id]').forEach(btn => {
         btn.addEventListener('click', () => openModal(parseInt(btn.dataset.id)));
       });
     }
